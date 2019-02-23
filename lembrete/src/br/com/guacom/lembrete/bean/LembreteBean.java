@@ -67,8 +67,4 @@ public class LembreteBean implements Serializable {
 		}
 		return lembretes;
 	}
-	
-	public Locale locale() {
-		return new Locale("pt", "BR");
-	}
 }
