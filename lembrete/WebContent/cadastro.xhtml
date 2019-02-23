@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="_template.xhtml" >
+	<ui:define name="titulo">
+		Cadastro Lembrete
+	</ui:define>
+	<ui:define name="conteudo">
+		<h:form>
+			<b:growl id="messages" showDetail="true" autoUpdate="true" />
+			<b:container id="cont">
+				<b:jumbotron id="jumb">
+					<h2>Novo Lembrete</h2>
+					<p:outputPanel>Crie os seus lembretes para que os seus compromissos não sejam
+						esquecidos!</p:outputPanel>
+	
+					<h:form id="cadastro">
+						<b:messages id="messages" />
+						<h:panelGrid columns="1">
+							<b:inputText id="titulo" label="Título"
+								placeholder="Digite seu título"
+								value="#{lembreteBean.lembrete.titulo}" required="true"
+								requiredMessage="Título obrigatório!">
+								<f:ajax event="blur" render="messages" />
+								<f:facet name="prepend">
+									<h:outputText value="" />
+								</f:facet>
+	
+							</b:inputText>
+							<b:inputText label="Descrição"
+								placeholder="Descrição para o lembrete"
+								value="#{lembreteBean.lembrete.descricao}">
+								<f:facet name="prepend">
+									<h:outputText value="" />
+								</f:facet>
+							</b:inputText>
+							<p:outputLabel value="Data" />
+							<b:datepicker id="data" required="true"
+								requiredMessage="Data obrigatória!"
+								value="#{lembreteBean.lembrete.data}" locale="pt_BR"
+								pattern="dd/MM/yyyy" mask="true">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</b:datepicker>
+							<p:outputLabel for="hora" value="Hora" />
+							<pe:timePicker id="hora" timeSeparator=":" icon="ui-icon-disk" value="#{lembreteBean.lembrete.hora}"
+								required="true" requiredMessage="Horário obrigatório!"
+								locale="#{timePickerUtil.locale()}" pattern="dd/MM/yyyy HH:mm">
+							</pe:timePicker>
+							<br />
+							<b:commandButton class="btn btn-lg btn-info"
+								value="Salvar Lembrete" action="#{lembreteBean.save}">
+							</b:commandButton>
+						</h:panelGrid>
+					</h:form>
+				</b:jumbotron>
+			</b:container>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

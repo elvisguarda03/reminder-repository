@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition template="_template.xhtml">	
+		<ui:define name="titulo">
+			Lista de Lembretes
+		</ui:define>
+		<ui:define name="conteudo">
+			<h:form>
+				<b:container id="cont">
+					<b:jumbotron id="jumb">
+						<h:form>
+							<b:dataTable value="#{lembreteBean.loadReminders()}" var="reminder">
+								<b:dataTableColumn label="Título" value="#{reminder.titulo}" />
+								<b:dataTableColumn label="Descrição" value="#{reminder.descricao}" />
+								<b:dataTableColumn label="Data" value="#{reminder.formatDate()}" />
+								<b:dataTableColumn label="Hora" value="#{reminder.formatHour()}"></b:dataTableColumn>
+							</b:dataTable>
+						</h:form>
+					</b:jumbotron>
+				</b:container>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

@@ -1,0 +1,6 @@
+#Compiled class file
+*.class
+# Virtual machine crash logs
+hs_err_pid*
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/

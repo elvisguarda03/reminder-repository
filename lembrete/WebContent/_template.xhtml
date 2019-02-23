@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h:head>
+		<meta charset="UTF-8" />
+		<title><ui:insert name="titulo"></ui:insert></title>
+		<style>
+			body {
+				background-image: url("#{resource['images/background.jpeg']}");
+				width:100%;
+				height=:100%;
+			}
+		</style>
+	</h:head>
+	<div id="conteudo">
+		<h:body>
+			<h:form>
+				<b:navBar brand="Cadastro de Lembrete"
+					brandHref="cadastro.xhtml" fixed="top">
+					<b:navbarLinks>
+						<b:navCommandLink value="Cadastrar" action="#{lembreteBean.cadastro()}"></b:navCommandLink>
+						<b:navCommandLink value="Visualizar Lembretes" action="#{lembreteBean.lembrete()}"></b:navCommandLink>
+					</b:navbarLinks>
+				</b:navBar>
+			</h:form>
+		</h:body>
+	</div>
+	<div id="content">
+			<h:body style="padding: 60px">
+				<ui:insert name="conteudo">
+			
+				</ui:insert>
+			</h:body>
+	</div>
+</html>
