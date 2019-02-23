@@ -30,17 +30,24 @@ public class Lembrete implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date data;
 	
-	public Lembrete(String titulo, String descricao, Date data) {
+	public Lembrete(String titulo, String descricao, String hora, Date data) {
 		this.titulo = titulo;
 		this.descricao = descricao;
 		this.data = data;
+		this.hora = hora;
 	}
-
+	
 	public Lembrete(String titulo, String descricao) {
 		this.titulo = titulo;
 		this.descricao = descricao;
 	}
 
+	public Lembrete(String titulo, String hora, Date data) {
+		this.titulo = titulo;
+		this.hora = hora;
+		this.data = data;
+	}
+	
 	public Lembrete(String titulo, Date data) {
 		this.titulo = titulo;
 		this.data = data;
@@ -94,6 +101,8 @@ public class Lembrete implements Serializable {
 	}
 	
 	public void setHora(String hora) {
+		if(hora == null)
+			throw new IllegalArgumentException("O campo de hora está vázio!");
 		this.hora = hora;
 	}
 	
